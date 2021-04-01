@@ -1,0 +1,7 @@
+.app { 
+  position: relative;
+  top: 0;
+  left: 0;
+  min-width: 900px;
+  padding-top: 60px;;
+}

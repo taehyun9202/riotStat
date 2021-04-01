@@ -1,0 +1,38 @@
+.navbar {
+    width: calc(100% - 80px);
+    min-width: 900px;
+    position: absolute;
+    background-color: skyblue;
+    top: 0;
+    display: flex;
+    height: 48px;
+    padding: 5px 40px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.navbar .navbar_Options {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.navbar_Option {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.navbar_Option:hover {
+    color: blue;
+}
+
+.navbar .navbar_SearchBar form input {
+    height: 20px;
+}
+
+.navbar .navbar_SearchBar form button {
+    height: 20px;
+}

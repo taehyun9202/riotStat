@@ -1,0 +1,51 @@
+.match {
+    display: flex;
+    height: 140px;
+    margin: 40px 0;
+}
+
+.match .userMatch {
+    width: 100%;
+    display: flex;
+}
+
+.match .userMatch .userMatch_Info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 80px;
+    line-height: 2px;
+    padding-top: 12px;
+}
+.match .userMatch .userMatch_Info p {
+    font-size: 12px;
+    margin-top: -5px;
+}
+
+.match .userMatch .userMatch_Champion {
+    width: 160px;
+}
+
+.match .userMatch .userMatch_Stat_1 {
+    width: 100px;
+}
+
+.match .userMatch .userMatch_Stat_2 {
+    width: 100px;
+}
+
+.match .userMatch .userMatch_Items {
+    width: 210px;
+    display: flex;
+    flex-direction: row;
+}
+
+.match .userMatch .userMatch_Items img {
+    height: 30px;
+    width: 30px;
+}
+
+.match .userMatch_Participant {
+    width: 250px;
+    display: flex;
+}

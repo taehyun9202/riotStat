@@ -1,0 +1,27 @@
+.championList {
+    width: 900px;
+    display: inline-block;
+    padding: 40px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.championList .championList_List {
+    width: 100%;
+    display: inline-block;
+}
+
+.championList .championList_List .championList_Champ {
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+.championList .championList_List .championList_Champ p {
+    width: 120px;
+}
+
+.championList .championList_List .championList_Champ img {
+    width: 120px;
+    height: 120px;
+}

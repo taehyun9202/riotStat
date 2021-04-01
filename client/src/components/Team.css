@@ -1,0 +1,15 @@
+.team {
+    position: relative;
+}
+
+.team_ChampionImage {
+    position: relative;
+    top: 10px;
+    left: 0;
+}
+.team_Participant {
+    position: relative;
+    margin: -10px 20px;
+    top: -130px;
+    left: 10px;
+}
