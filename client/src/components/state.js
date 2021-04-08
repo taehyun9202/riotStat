@@ -1,4 +1,4 @@
-export const API_KEY = "RGAPI-83cbd9d1-44d2-443a-a633-d5b0f732d1d7"
+export const API_KEY = "RGAPI-37562caa-268b-417a-b567-64b5ee0ba1a6"
 // export const API_KEY = prompt("Enter API KEY")
 export var language = "en_US"
 export var version = "11.6.1"
@@ -340,5 +340,20 @@ export const convertSummonerSpell = spell => {
             return "SummonerBarrier"
         case 32:
             return "SummonerSnowURFSnowball_Mark"
+    }
+}
+
+export const converlargestMultiKill = kill => {
+    switch(kill) {
+        case 1:
+            return null
+        case 2:
+            return "Double Kill"
+        case 3:
+            return "Triple Kill"
+        case 4:
+            return "Quadra Kill"
+        case 5:
+            return "PENTA KILL!!"
     }
 }

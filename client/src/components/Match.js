@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './Match.css'
 import Team from './Team'
-import { API_KEY, version, language, convertSummonerSpell, convertChampionId } from './state'
+import { API_KEY, version, language, convertSummonerSpell, convertChampionId, converlargestMultiKill } from './state'
 import Loader from 'react-loader-spinner'
+import { Link } from 'react-router-dom'
 
 function Match(props) {
     const [ matchInfo, setMatchInfo ] = useState({})
     const [ isLoading, setIsLoading ] = useState(false);
     const [ userChampion, setUserChampion ] = useState(null)
+
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
-    
             try {
                 await axios.get(`/match/v4/matches/${props.gameId}?api_key=${API_KEY}`)
                     .then(res => {
@@ -104,21 +105,23 @@ function Match(props) {
                     </div>
 
                     <div className="userMatch_Champion">
-                        <img src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(userChampionId)}.png`}></img>
+                        <Link to={`/champion/${convertChampionId(userChampionId)}`}>
+                            <img className="userMatch_Champion_Photo" src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(userChampionId)}.png`} />
+                        </Link>
                         <div className="userMatch_Summoner_Spell">
-                            <img src={`http://ddragon.leagueoflegends.com/cdn/11.7.1/img/spell/${convertSummonerSpell(summonerSpell_1)}.png`} alt="summonerSpell_1" />
-                            <img src={`http://ddragon.leagueoflegends.com/cdn/11.7.1/img/spell/${convertSummonerSpell(summonerSpell_2)}.png`} alt="summonerSpell_2" />
+                            <img className="userMatch_Summoner_Spell_Photo" src={`http://ddragon.leagueoflegends.com/cdn/11.7.1/img/spell/${convertSummonerSpell(summonerSpell_1)}.png`} alt="summonerSpell_1" />
+                            <img className="userMatch_Summoner_Spell_Photo" src={`http://ddragon.leagueoflegends.com/cdn/11.7.1/img/spell/${convertSummonerSpell(summonerSpell_2)}.png`} alt="summonerSpell_2" />
                         </div>
                     </div>
 
                     <div className="userMatch_Stat_1">
                         <h4>{userKill} / {userDeath} / {userAssist}</h4>
                         <h5>{((userKill + userAssist) / userDeath).toFixed(2)} KDA</h5>
-                        <div>{largestMultiKill}</div>
+                        {largestMultiKill > 1 ? <h5 className="userMatch_Stat_1_MultiKill">{converlargestMultiKill(largestMultiKill)}</h5> : null}
                     </div>
 
                     <div className="userMatch_Stat_2">
-                        <p>{userLevel}</p>
+                        <p>LVL {userLevel}</p>
                         <p>{userMinionKilled} CS</p>
                     </div>
 

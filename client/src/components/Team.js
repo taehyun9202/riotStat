@@ -6,8 +6,8 @@ import './Team.css'
 function Team(props) {
     return (
         <div className="team">
-            {props.info?.map((user) => (
-                <div className="team_ChampionImage">
+            <div className="team_ChampionImage">
+                {props.info?.map((user) => (
                     <img 
                         src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(user.championId)}.png`}
                         alt="ChampionIcon"
@@ -15,15 +15,15 @@ function Team(props) {
                             height: "20px"
                         }}
                     />
-                </div>
-            ))}
-            {props.team?.map((user) => (
-                <div className="team_Participant">
+                ))}
+            </div>
+            <div className="team_Participant">
+                {props.team?.map((user) => (
                     <Link to={`/summoner/${user.player.summonerName}`}>
-                    <p>{user.player.summonerName}</p>
+                        <p className="team_Participant_SummonerId">{user.player.summonerName}</p>
                     </Link>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }

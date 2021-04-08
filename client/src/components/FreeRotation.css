@@ -1,0 +1,39 @@
+.rotation {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.rotation_Section {
+    width: 100%;
+}
+
+.rotation_List {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 1.4rem;
+}
+
+.rotation .rotation_List .championList_Champ {
+    width: 160px;
+    height: 160px;
+    position: relative;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rotation .championList_List .championList_Champ p {
+    position: relative;
+    text-decoration: none;
+}
+
+.rotation .championList_List .championList_Champ img {
+    position: relative;
+    top: 15px;
+    width: 120px;
+    height: 120px;
+}

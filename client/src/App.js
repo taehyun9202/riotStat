@@ -8,6 +8,8 @@ import Navbar from './components/Navbar'
 import ChampionList from './components/ChampionList'
 import ChampionInfo from './components/ChampionInfo'
 import SummonerInfo from './components/SummonerInfo'
+import FreeRotation from './components/FreeRotation'
+import Home from './components/Home';
 
 
 function App() {
@@ -30,10 +32,12 @@ function App() {
             )}
           />
 
-          
+          <Route path="/rotation">
+            <FreeRotation />
+          </Route>
           
           <Route path="/">
-            <ChampionList />
+            <Home />
           </Route>
         </Switch>
       </Router>

@@ -23,21 +23,67 @@
 }
 
 .match .userMatch .userMatch_Champion {
-    width: 160px;
+    /* width: 170px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+}
+
+.match .userMatch .userMatch_Champion .userMatch_Champion_Photo {
+    width: 110px;
+}
+
+.match .userMatch .userMatch_Champion .userMatch_Summoner_Spell {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.match .userMatch .userMatch_Champion .userMatch_Summoner_Spell .userMatch_Summoner_Spell_Photo {
+    width: 50px;
+    
 }
 
 .match .userMatch .userMatch_Stat_1 {
-    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 90px;
+    padding-left: 10px;
+}
+
+.match .userMatch .userMatch_Stat_1 h4, .match .userMatch .userMatch_Stat_1 h5 {
+    font-size: 13px;
+    margin-top: 25px;
+    margin-bottom: -10px;
+}
+.match .userMatch .userMatch_Stat_1 .userMatch_Stat_1_MultiKill {
+    background-color: #ee5a52;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
 .match .userMatch .userMatch_Stat_2 {
-    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    padding-left: 10px;
 }
 
-.match .userMatch .userMatch_Items {
-    width: 210px;
-    display: flex;
-    flex-direction: row;
+    .match .userMatch .userMatch_Items {
+    width: 120px;
+    height: 40px;
+    display: grid;
+    position: relative;
+    top: 50%;
+    transform: translateY(-85%);
+    grid-template-columns: auto auto auto auto;
+    row-gap: 10px;
+    padding: 0 10px;
 }
 
 .match .userMatch .userMatch_Items img {
@@ -46,6 +92,16 @@
 }
 
 .match .userMatch_Participant {
-    width: 250px;
+    width: 330px;
     display: flex;
+}
+
+.userMatch_Participant .matchParticipant_Team_1 {
+    flex: 0.5;
+    position: relative;
+}
+
+.userMatch_Participant .matchParticipant_Team_2 {
+    flex: 0.5;
+    position: relative;
 }

@@ -15,7 +15,6 @@ function MatchHistory(props) {
             .catch(err => console.log(err))
         fetchData()
     },[props.summoner.accountId])
-
     var lastTenMatches = matchHistory.slice(0, 10)
 
     return (

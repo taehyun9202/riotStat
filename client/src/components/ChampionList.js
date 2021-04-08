@@ -13,15 +13,16 @@ function ChampionList(props) {
             .catch(err => console.log(err))
     },[championList?.length])
 
-    console.log(championList)
-
     return (
         <div className="championList">
+            <h1>All Champions</h1>
             <div className="championList_List">
                 { Object.keys(championList).map((champion) => (
-                    <Link className="championList_Champ" to={{ pathname: `/champion/${champion}`, champion: championList[champion] }}>
-                        <p>{championList[champion].name}</p>
-                        <img src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion}.png`} alt={champion}/>
+                    <Link to={{ pathname: `/champion/${champion}`, champion: championList[champion] }}>
+                        <div className="championList_Champ">
+                            <img src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion}.png`} alt={champion}/>
+                            <p>{championList[champion].name}</p>
+                        </div>
                     </Link>
                 ))}
             </div>

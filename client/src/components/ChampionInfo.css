@@ -1,0 +1,42 @@
+.championInfo {
+    width: 900px;
+    position: relative;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 80px;
+}
+
+
+.championInfo .championInfo_Top {
+    position: relative;
+    display: flex;
+    height: 400px;
+    gap: 20px;
+}
+
+.championInfo .championInfo_Top img {
+    flex: 0.4;
+}
+
+.championInfo .championInfo_Top .championInfo_Skills {
+    position: relative;
+    flex: 0.7;
+    display: inline;
+}
+
+.championInfo_Skin {
+    height: 500px;
+}
+
+.championInfo_skillImage {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin-left: 40px;
+}
+
+
+.championInfo_Description {
+    margin-top: 150px;
+}

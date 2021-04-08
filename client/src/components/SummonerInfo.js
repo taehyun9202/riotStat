@@ -4,10 +4,12 @@ import MatchHistory from './MatchHistory'
 import './SummonerInfo.css'
 import { API_KEY, version } from './state'
 import Loader from "react-loader-spinner";
+import TFTHistory from './TFTHistory'
 
 function SummonerInfo(props) {
     const [ summoner, setSummoner ] = useState({})
     const [ isLoading, setIsLoading ] = useState(false);
+    const [ selectMode, setSelectMode ] = useState('League')
 
     useEffect(() => {
         const fetchData = async () => {
@@ -28,7 +30,6 @@ function SummonerInfo(props) {
         }
         fetchData()
     },[props.match.params._id])
-    
 
     return (
         <div className="summonerInfo">
@@ -54,8 +55,19 @@ function SummonerInfo(props) {
                     </div>
                 </div>
             </div>
+            <div className="SummonerInfo_GameTab">
+                <button onClick={() => setSelectMode('League')}>League</button> 
+                <button onClick={() => setSelectMode('TFT')}>TFT</button>
+                <button onClick={() => setSelectMode('Valorant')}>Valorant</button>
+            </div>
             <div className="summonerInfo_MatchHistory">
-                <MatchHistory summoner={summoner} api={API_KEY}/>
+                {selectMode === "League" && (
+                    <MatchHistory summoner={summoner} /> )
+                }
+                {selectMode === "TFT" && (
+                    <TFTHistory summoner={summoner} />
+                )}
+                
             </div>
         </div>
     )
