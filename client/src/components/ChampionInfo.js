@@ -3,13 +3,15 @@ import axios from 'axios'
 import { version, language } from './state'
 import SkillHover from './SkillHover'
 import './ChampionInfo.css'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 function ChampionInfo(props) {
     const [ champion, setChampion ] = useState({})
     const [ isShown, setIsShown ] = useState(false)
     const [ currentSkill, setCurrentSkill ] = useState(null)
     const [ passive, setPassive ] = useState(false)
-
+    const [ skinNumber, setSkinNumber ] = useState(0)
 
     var championName = props.location.pathname.slice(10)
     useEffect(() => {
@@ -19,7 +21,7 @@ function ChampionInfo(props) {
         fetchData()
     },[champion.data])
     
-    console.log(champion)
+    console.log(champion, skinNumber)
 
     const skillHoverIn = skill => {
         setIsShown(true)
@@ -30,23 +32,41 @@ function ChampionInfo(props) {
         setIsShown(false)
         setCurrentSkill(null)
     }
-    // console.log(currentSkill)
+    
+    const prevSkin = () => {
+        if (skinNumber > 0) {
+            setSkinNumber(prev => prev - 1)
+            console.log(skinNumber)
+        }
+        if (skinNumber === 0 ) {
+            setSkinNumber(champion.skins.length)
+        }
+    }
+
+    const nextSkin = () => {
+        if (skinNumber < champion.skins.length) {
+            setSkinNumber(prev => prev + 1)
+            console.log(skinNumber)
+        }
+        if (skinNumber === champion.skins.length) {
+            setSkinNumber(0)
+        }
+    }
+
     return (
         <div className="championInfo">
             <h1>{champion.name}</h1>
             <div className="championInfo_Top">
-                {/* {champion.skins?.map((skin, index) => (
+                <div className="championInfo_Img">
                     <img 
-                        src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_${skin.num}.jpg`} 
-                        alt="champion"
-                        className="championInfo_Skin"
+                        src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_${skinNumber}.jpg`} 
+                        alt={`${champion.id}_Skin #${skinNumber}`}
                     />
-                ))} */}
-                <img 
-                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`} 
-                    alt="champion"
-                    className="championInfo_Skin"
-                />
+                    <div className="championInfo_Img_Pagination">
+                        <ArrowBackIosIcon onClick={() => prevSkin()} />
+                        <ArrowForwardIosIcon onClick={() => nextSkin()} />
+                    </div>
+                </div>
                 <div className="championInfo_Skills">
                     <img
                         className="championInfo_skillImage"

@@ -17,13 +17,16 @@ function Navbar() {
         <div className="navbar">
             <div className="navbar_Options">
                 <Link to="/" className="navbar_Option">
-                    <p>Champ</p>
-                </Link>
-                <Link to="TFT" className="navbar_Option">
-                    <p>TFT</p>
+                    <p>Champions</p>
                 </Link>
                 <Link to="/leaderboard" className="navbar_Option">
                     <p>Leaderboard</p>
+                </Link>
+                <Link to="/TFT" className="navbar_Option">
+                    <p>TFT</p>
+                </Link>
+                <Link to="/valorant" className="navbar_Option">
+                    <p>Valorant</p>
                 </Link>
             </div>
             <div className="navbar_SearchBar">

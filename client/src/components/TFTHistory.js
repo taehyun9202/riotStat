@@ -15,9 +15,16 @@ function TFTHistory(props) {
     
     return (
         <div className="tftHistory" style={{width:"100%"}} >
-            { teamFightTacticsHistory.map((match) => (
-                <TFTMatch gameId={match} summoner={props.summoner} />
-            ))}
+            {teamFightTacticsHistory.length > 0 ? 
+                <div>
+                    { teamFightTacticsHistory.map((match) => (
+                        <TFTMatch gameId={match} summoner={props.summoner} />
+                    ))}
+                </div> :
+                <div>
+                    no data
+                </div>
+            }
         </div>
     )
 }

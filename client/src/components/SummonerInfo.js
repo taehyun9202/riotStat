@@ -3,7 +3,7 @@ import axios from 'axios'
 import MatchHistory from './MatchHistory'
 import './SummonerInfo.css'
 import { API_KEY, version } from './state'
-import Loader from "react-loader-spinner";
+import Loader from "react-loader-spinner"
 import TFTHistory from './TFTHistory'
 
 function SummonerInfo(props) {

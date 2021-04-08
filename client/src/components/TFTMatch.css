@@ -1,0 +1,76 @@
+.TFTMatch {
+    display: flex;
+    height: 160px;
+    margin: 42px 0;
+}
+
+.TFTMatch .TFTMatch_userMatch {
+    width: 100%;
+    display: flex;
+}
+
+.TFTMatch_userMatch_Info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 70px;
+    line-height: 2px;
+    padding-left: 10px;
+}
+
+
+.TFTMatch_userMatch_Traits {
+    width: 140px;
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.TFTMatch_userMatch_Units {
+    position: relative;
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.TFTMatch_userMatch_Unit {
+    width: 42px;
+}
+
+.TFTMatch_userMatch_UnitItems {
+    width: 42px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.TFTMatch_userMatch_Unit_Img {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: calc(50% - 21px);
+}
+
+.TFTMatch_userMatch_Unit_Level {
+    width: 14px;
+    position: relative;
+    top: 20px;
+    left: 14px;
+    display: flex;
+    color: gold;
+    justify-content: center;
+}
+
+.TFTMatch_userMatch_Item_Img {
+    width: 14px;
+    position: relative;
+    top: 50px;
+}
+
+.TFTMatch_userMatch_Participants {
+    flex: 1;
+}

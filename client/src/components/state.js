@@ -1,4 +1,4 @@
-export const API_KEY = "RGAPI-37562caa-268b-417a-b567-64b5ee0ba1a6"
+export const API_KEY = "RGAPI-8d866ef7-4dd5-47a6-b8c1-c8c5f615d6cc"
 // export const API_KEY = prompt("Enter API KEY")
 export var language = "en_US"
 export var version = "11.6.1"
@@ -357,3 +357,26 @@ export const converlargestMultiKill = kill => {
             return "PENTA KILL!!"
     }
 }
+
+export const conversionItem = item => {
+    var temp = item.toString()
+    if (temp.length < 2){
+      var convertedInteger = "0" + temp
+      return convertedInteger
+    } else {
+      return item
+    }
+  }
+
+
+export const getTime = time => { 
+    var minutes = Math.floor(time / 60);
+    var seconds = Math.round(time - minutes * 60);
+    return minutes.toString() + "m " + seconds.toString() + "s"
+  }
+
+
+export const getDate = date => {
+      var index = date?.indexOf(',')
+      return date?.slice(0, index)
+  }

@@ -4,10 +4,14 @@ import { API_KEY, version, language} from './state'
 import Loader from 'react-loader-spinner'
 import traits from './TFT/traits.json'
 import items from './TFT/items.json'
+import { conversionItem, getTime, getDate } from './state'
 import champions from './TFT/champions.json'
+import './TFTMatch.css'
+import TFTParticipants from './TFTParticipants'
 
 function TFTMatch(props) {
     const [ matchInfo, setMatchInfo ] = useState({})
+    const [ allParticipants, setAllParticipants ] = useState({})
     const [ isLoading, setIsLoading ] = useState(false);
     
     useEffect(() => {
@@ -15,7 +19,10 @@ function TFTMatch(props) {
             setIsLoading(true);
             try {
                 await axios.get(`https://americas.api.riotgames.com/tft/match/v1/matches/${props.gameId}?api_key=${API_KEY}`)
-                    .then(res => setMatchInfo(res.data.info))
+                    .then(res => {
+                      setAllParticipants(res.data.metadata.participants)
+                      setMatchInfo(res.data.info)
+                    })
                     .catch(err => console.log(err))
             } catch (error) {
                 console.log(error)
@@ -31,26 +38,6 @@ function TFTMatch(props) {
       }
     }
 
-    const conversionTrait = trait => {
-      var traitData = [...traits]
-      for (var i in traitData){
-        if (traitData[i].key === trait){
-          return traitData[i].name.toLowerCase()
-        }
-      }
-    }
-
-    const getTime = time => { 
-      var minutes = Math.floor(time / 60);
-      var seconds = Math.round(time - minutes * 60);
-      return minutes.toString() + "m " + seconds.toString() + "s"
-    }
-
-    const getDate = date => {
-        var index = date?.indexOf(',')
-        return date?.slice(0, index)
-    }
-
     if(currentSummoner) {
       var userTraits = matchInfo.participants[currentSummoner].traits //array of objects that contains all traits at the end (it also includes the how many unit for each trait, and their trait lvl so that it displays the color correctly)
       var userUnits = matchInfo.participants[currentSummoner].units //array of objects that contians all units at the end, with its character's infos (item, cost, lvl, etc)
@@ -60,23 +47,60 @@ function TFTMatch(props) {
       var gameDuration = getTime(matchInfo.participants[currentSummoner].time_eliminated)
       var gameDate = getDate((new Date(matchInfo.game_datetime)).toLocaleString())
       var gameMode = matchInfo.tft_game_type
+      // var allParticipants = matchInfo.
     }
 
-    // for (var i in userTraits) {
-    //   if (userTraits[i].tier_current > 0){
-    //     var traitUsed = traitUsed.push(userTraits[i].name)
-    //   }
-    // }
+    const conversionTrait = trait => {
+      var traitData = [...traits]
+      for (var i in traitData){
+        if (traitData[i].key === trait){
+          return traitData[i].name.toLowerCase()
+        }
+      }
+    }
 
+    const renderStars = level => {
+      switch(level) {
+        case 1: 
+          return (
+            <div className="TFTMatch_userMatch_Unit_Level">
+              <p>★</p>
+            </div>
+          )
+        case 2: 
+          return (
+            <div className="TFTMatch_userMatch_Unit_Level">
+              <p>★★</p>
+            </div>
+          )
+        case 3: 
+          return (
+            <div className="TFTMatch_userMatch_Unit_Level">
+              <p>★★★</p>
+            </div>
+          )
+      }
+    }
+
+
+    const renderBackGroundColor = placement => {
+      if (placement === 1) {
+        return "lightgreen"
+      } else if ( placement > 4) {
+        return "tomato"
+      } else {
+        return "skyblue"
+      }
+    }
 
     return (
       <div
-        className="match"
-            style={{
-                // backgroundColor: gameResult ? "skyblue" : "tomato",
-                justifyContent: isLoading ? "center" : null,
-                alignItems: isLoading ? "center" : null,
-            }}
+        className="TFTMatch"
+        style={{
+            backgroundColor: renderBackGroundColor(userPlacement),
+            justifyContent: isLoading ? "center" : null,
+            alignItems: isLoading ? "center" : null,
+        }}
       >
         {
           isLoading ? 
@@ -87,25 +111,50 @@ function TFTMatch(props) {
             width={30}
             timeout={3000}
           /> :
-          <div className="userTFTMatch">
-            <div className="userTFTMatch_Info">
+          <div className="TFTMatch_userMatch">
+            <div className="TFTMatch_userMatch_Info">
+              <h2 style={{
+                color : userPlacement > 4 ? "red" : "blue"
+              }}>
+                # {userPlacement}
+              </h2>
               <h4>{gameMode}</h4>
               <p>{gameDate}</p>
-              {/* {gameResult} */}
               <p>{gameDuration}</p>
             </div>
 
-            <div className="userTFTMatch_Traits" style={{width:"100%"}}>
-              {userTraits?.map((trait) => (
-                <div>
-                  <img src={process.env.PUBLIC_URL + `/TFT/traits/${conversionTrait(trait.name)}.png`} alt=""
-                    style={{height:"20px", width:"20px"}}
-                  />
-                </div>
-              ))}
+            <div className="TFTMatch_userMatch_Traits">
+              {userTraits?.map((trait) => {
+                  if (trait.tier_current > 0){
+                    return (
+                      <div>
+                        <img src={process.env.PUBLIC_URL + `/TFT/traits/${conversionTrait(trait.name)}.png`} alt=""
+                          style={{height:"20px", width:"20px"}}
+                        />
+                      </div>
+                )}
+              })}
             </div>
 
-            <div className="userTFTMatch_Units">
+            <div className="TFTMatch_userMatch_Units">
+              {userUnits?.map((unit) => (
+                <div className="TFTMatch_userMatch_Unit">
+                  <div className="TFTMatch_userMatch_UnitLevel">
+                    {renderStars(unit.tier)}
+                  </div>
+                  <img className="TFTMatch_userMatch_Unit_Img" src={process.env.PUBLIC_URL + `/TFT/champions/${unit.character_id}.png`} alt=""/>
+                  <div className="TFTMatch_userMatch_UnitItems">
+                    { unit.items.map((item) => (
+                      <img className="TFTMatch_userMatch_Item_Img" src={process.env.PUBLIC_URL + `/TFT/items/${conversionItem(item)}.png`} alt=""/>
+                    ))}
+                  </div>
+                </div>
+                ))}
+            </div>
+            <div className="TFTMatch_userMatch_Participants">
+              {allParticipants?.map((participant) => (
+                <TFTParticipants participant={participant}/>
+              ))}
             </div>
 
           </div>

@@ -11,18 +11,38 @@
 .championInfo .championInfo_Top {
     position: relative;
     display: flex;
-    height: 400px;
+    height: 500px;
     gap: 20px;
 }
 
-.championInfo .championInfo_Top img {
+.championInfo_Img {
+    height: 500px;
     flex: 0.4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.championInfo_Img_Pagination {
+    display: flex;
+    gap: 20px;
+}
+
+.MuiSvgIcon-root {
+    cursor: pointer;
+}
+
+.championInfo_Img img {
+    height: 500px;
+    width: 100%;
 }
 
 .championInfo .championInfo_Top .championInfo_Skills {
     position: relative;
     flex: 0.7;
     display: inline;
+    height: 500px;
 }
 
 .championInfo_Skin {

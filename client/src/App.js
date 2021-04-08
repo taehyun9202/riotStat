@@ -10,6 +10,7 @@ import ChampionInfo from './components/ChampionInfo'
 import SummonerInfo from './components/SummonerInfo'
 import FreeRotation from './components/FreeRotation'
 import Home from './components/Home';
+import Leaderboard from './components/Leaderboard';
 
 
 function App() {
@@ -31,6 +32,10 @@ function App() {
               <ChampionInfo {...props}/>
             )}
           />
+
+          <Route path="/leaderboard">
+            <Leaderboard />
+          </Route>
 
           <Route path="/rotation">
             <FreeRotation />
