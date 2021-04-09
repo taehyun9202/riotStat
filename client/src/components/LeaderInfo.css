@@ -1,0 +1,36 @@
+.leaderInfo {
+    border: 1px solid black;
+    width: 900px;
+    position: relative;
+    height: 30px;
+}
+
+.leaderInfo_Content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50px 250px 160px 120px 30px 40px 40px auto;
+    grid-template-areas: "leaderInfo_Index leaderInfo_Summoner leaderInfo_Queue leaderInfo_Type leaderInfo_Rank leaderInfo_Wins leaderInfo_Loses leaderInfo_Points";
+    grid-gap: 10px;
+}
+
+.leaderInfo_Content p {
+    height: 15px !important;
+    line-height: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.leaderInfo a {
+    text-decoration: none;
+}
+.leaderInfo_Content p:nth-child(1) {
+    font-weight: 800;
+}
+
+.leaderInfo_Content p:last-child {
+    font-weight: 800;
+}
+
+#leaderInfo_Series {
+    font-weight: 800;
+}

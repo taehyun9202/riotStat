@@ -11,6 +11,7 @@ function ChampionInfo(props) {
     const [ isShown, setIsShown ] = useState(false)
     const [ currentSkill, setCurrentSkill ] = useState(null)
     const [ passive, setPassive ] = useState(false)
+    const [ champLore, setChampLore ] = useState(false)
     const [ skinNumber, setSkinNumber ] = useState(0)
 
     var championName = props.location.pathname.slice(10)
@@ -20,15 +21,13 @@ function ChampionInfo(props) {
             .catch(err => console.log(err))
         fetchData()
     },[champion.data])
-    
-    console.log(champion, skinNumber)
 
     const skillHoverIn = skill => {
         setIsShown(true)
         setCurrentSkill(skill)
     }
 
-    const skillHoverOut = skill => {
+    const skillHoverOut = () => {
         setIsShown(false)
         setCurrentSkill(null)
     }
@@ -36,20 +35,30 @@ function ChampionInfo(props) {
     const prevSkin = () => {
         if (skinNumber > 0) {
             setSkinNumber(prev => prev - 1)
-            console.log(skinNumber)
         }
         if (skinNumber === 0 ) {
-            setSkinNumber(champion.skins.length)
+            setSkinNumber(champion.skins.length - 1)
         }
     }
 
     const nextSkin = () => {
-        if (skinNumber < champion.skins.length) {
+        if (skinNumber < champion.skins.length - 1) {
             setSkinNumber(prev => prev + 1)
-            console.log(skinNumber)
         }
-        if (skinNumber === champion.skins.length) {
+        if (skinNumber === champion.skins.length - 1) {
             setSkinNumber(0)
+        }
+    }
+
+    const renderSkinName = () => {
+        if (skinNumber > 0) {
+            return (
+                <h4>{champion.skins[skinNumber]?.name}</h4>
+            )
+        } else {
+            return (
+                <h4>{champion.id}</h4>
+            )
         }
     }
 
@@ -57,16 +66,33 @@ function ChampionInfo(props) {
         <div className="championInfo">
             <h1>{champion.name}</h1>
             <div className="championInfo_Top">
-                <div className="championInfo_Img">
-                    <img 
-                        src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_${skinNumber}.jpg`} 
-                        alt={`${champion.id}_Skin #${skinNumber}`}
-                    />
-                    <div className="championInfo_Img_Pagination">
-                        <ArrowBackIosIcon onClick={() => prevSkin()} />
-                        <ArrowForwardIosIcon onClick={() => nextSkin()} />
-                    </div>
-                </div>
+                { champion.skins ?
+                    <div className="championInfo_Img">
+                        <img 
+                            src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_${champion.skins[skinNumber]?.num}.jpg`} 
+                            alt={`${champion?.id}_Skin #${skinNumber}`}
+                            onMouseEnter={() => {
+                                skillHoverIn(champion.lore)
+                                setChampLore(true)
+                            }}
+                            onMouseLeave={() => {
+                                skillHoverOut(champion.lore)
+                                setChampLore(false)
+                            }}
+                        />
+                        <div className="championInfo_Img_Pagination">
+                            <ArrowBackIosIcon 
+                                className="pagination_LeftArrow"
+                                onClick={() => prevSkin()}
+                            />
+                            {renderSkinName()}
+                            <ArrowForwardIosIcon 
+                                className="pagination_RightArrow"
+                                onClick={() => nextSkin()}
+                            />
+                        </div>
+                    </div> : null
+                }
                 <div className="championInfo_Skills">
                     <img
                         className="championInfo_skillImage"
@@ -91,12 +117,9 @@ function ChampionInfo(props) {
                         />
                     ))}
                     {isShown && (
-                        <SkillHover skill={currentSkill} hover={isShown} passive={passive}/>
+                        <SkillHover skill={currentSkill} hover={isShown} passive={passive} chamImg={champLore} lore={champion.lore}/>
                     )}
                 </div>
-            </div>
-            <div className="championInfo_Description">
-                <p>{champion.lore}</p>
             </div>
         </div>
     )

@@ -58,7 +58,6 @@ function SummonerInfo(props) {
             <div className="SummonerInfo_GameTab">
                 <button onClick={() => setSelectMode('League')}>League</button> 
                 <button onClick={() => setSelectMode('TFT')}>TFT</button>
-                <button onClick={() => setSelectMode('Valorant')}>Valorant</button>
             </div>
             <div className="summonerInfo_MatchHistory">
                 {selectMode === "League" && (

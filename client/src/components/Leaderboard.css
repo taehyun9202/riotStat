@@ -1,0 +1,50 @@
+.leaderBoard {
+    width: 900px;
+    display: inline-block;
+    padding: 40px;
+    position: relative;
+    left: calc(50%);
+    transform: translateX(-50%);
+}
+
+.leaderBoard_Selection {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    padding: 20px 0 40px;
+}
+
+.leaderBoard_Selection label {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.leaderBoard_Selection select {
+    height: 25px;
+    font-size: 20px;
+}
+
+.leaderBoard_Content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.leaderBoard_Content_Title {
+    width: 900px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 50px 250px 160px 120px 30px 40px 40px auto;
+    grid-template-areas: "leaderInfo_Index leaderInfo_Summoner leaderInfo_Queue leaderInfo_Type leaderInfo_Rank leaderInfo_Wins leaderInfo_Loses leaderInfo_Points";
+    grid-gap: 10px;
+    border: 1px solid black;
+}
+
+.leaderBoard_Content_Title p {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 800;
+}

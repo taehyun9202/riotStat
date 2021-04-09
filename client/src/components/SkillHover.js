@@ -5,10 +5,16 @@ function SkillHover(props) {
     return (
         <div className="skillHover" style={{display : props.hover === true ? "block" : "none"}}>
             <div className="skillHover_title">
-                <p>{props.skill?.name}</p>
+                <h1>{props.skill?.name}</h1>
                 {props.passive && (<p>{props.skill.description}</p>)}
+                {props.chamImg && (
+                    <div>
+                        <h1>Champion Lore</h1>
+                        <p>{props.lore}</p>
+                    </div>
+                )}
             </div>
-            {!props.passive && (
+            {!props.passive && !props.chamImg && (
                 <div>
                     <div>
                         Cooldown(second): {props.skill.cooldownBurn}

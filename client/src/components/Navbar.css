@@ -15,7 +15,7 @@
 .navbar .navbar_Options {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 30px;
 }
 
 .navbar_Option {
@@ -29,10 +29,14 @@
     color: blue;
 }
 
+.navbar_Right {
+    display: flex;
+}
+
 .navbar .navbar_SearchBar form input {
     height: 20px;
 }
 
 .navbar .navbar_SearchBar form button {
-    height: 20px;
+    height: 26px;
 }

@@ -11,9 +11,10 @@ import TFTParticipants from './TFTParticipants'
 
 function TFTMatch(props) {
     const [ matchInfo, setMatchInfo ] = useState({})
-    const [ allParticipants, setAllParticipants ] = useState({})
+    const [ allParticipants, setAllParticipants ] = useState([])
     const [ isLoading, setIsLoading ] = useState(false);
-    
+    const [ showParticiapnts, setShowParticipants ] = useState(false)
+
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
@@ -41,13 +42,10 @@ function TFTMatch(props) {
     if(currentSummoner) {
       var userTraits = matchInfo.participants[currentSummoner].traits //array of objects that contains all traits at the end (it also includes the how many unit for each trait, and their trait lvl so that it displays the color correctly)
       var userUnits = matchInfo.participants[currentSummoner].units //array of objects that contians all units at the end, with its character's infos (item, cost, lvl, etc)
-      var userLevel = matchInfo.participants[currentSummoner].level
       var userPlacement = matchInfo.participants[currentSummoner].placement
-      var userDamage = matchInfo.participants[currentSummoner].total_damage_to_players
       var gameDuration = getTime(matchInfo.participants[currentSummoner].time_eliminated)
       var gameDate = getDate((new Date(matchInfo.game_datetime)).toLocaleString())
-      var gameMode = matchInfo.tft_game_type
-      // var allParticipants = matchInfo.
+      var queue_id = matchInfo.queue_id
     }
 
     const conversionTrait = trait => {
@@ -118,22 +116,19 @@ function TFTMatch(props) {
               }}>
                 # {userPlacement}
               </h2>
-              <h4>{gameMode}</h4>
+              { queue_id === 1090 ? 
+                <h4>Normal</h4> : <h4>Ranked</h4>
+              }
               <p>{gameDate}</p>
               <p>{gameDuration}</p>
             </div>
 
             <div className="TFTMatch_userMatch_Traits">
-              {userTraits?.map((trait) => {
-                  if (trait.tier_current > 0){
-                    return (
-                      <div>
-                        <img src={process.env.PUBLIC_URL + `/TFT/traits/${conversionTrait(trait.name)}.png`} alt=""
-                          style={{height:"20px", width:"20px"}}
-                        />
-                      </div>
-                )}
-              })}
+              <div className="Trait_List">
+                {userTraits?.map((trait) => (
+                  <img src={process.env.PUBLIC_URL + `/TFT/traits/${conversionTrait(trait.name)}.png`} alt=""/>
+                ))}
+              </div>
             </div>
 
             <div className="TFTMatch_userMatch_Units">
@@ -152,9 +147,12 @@ function TFTMatch(props) {
                 ))}
             </div>
             <div className="TFTMatch_userMatch_Participants">
-              {allParticipants?.map((participant) => (
-                <TFTParticipants participant={participant}/>
-              ))}
+              {!showParticiapnts ? 
+                <button onClick={() => setShowParticipants(!showParticiapnts)}>Render Participants</button> :
+                 allParticipants?.map((participant) => (
+                  <TFTParticipants participant={participant}/>
+                ))
+              }
             </div>
 
           </div>

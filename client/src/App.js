@@ -11,6 +11,7 @@ import SummonerInfo from './components/SummonerInfo'
 import FreeRotation from './components/FreeRotation'
 import Home from './components/Home';
 import Leaderboard from './components/Leaderboard';
+import TFTLeaderboard from './components/TFTLeaderboard';
 
 
 function App() {
@@ -35,6 +36,10 @@ function App() {
 
           <Route path="/leaderboard">
             <Leaderboard />
+          </Route>
+
+          <Route path="/TFT">
+            <TFTLeaderboard />
           </Route>
 
           <Route path="/rotation">

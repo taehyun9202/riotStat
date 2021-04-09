@@ -1,7 +1,8 @@
-export const API_KEY = "RGAPI-8d866ef7-4dd5-47a6-b8c1-c8c5f615d6cc"
+export const API_KEY = "RGAPI-a37e8fad-96da-47df-bfb3-46b75313274b"
 // export const API_KEY = prompt("Enter API KEY")
 export var language = "en_US"
 export var version = "11.6.1"
+
 
 export const convertChampionId = id => {
     switch(id) {

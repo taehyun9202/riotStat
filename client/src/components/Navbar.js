@@ -5,6 +5,7 @@ import './Navbar.css'
 function Navbar() {
     const history = useHistory()
     const [ summonerName, setSummonerName ] = useState('')
+    const [ language, setLanguage ] = useState('en_US')
 
     const searchSummoner = () => {
         if(summonerName) {
@@ -23,22 +24,21 @@ function Navbar() {
                     <p>Leaderboard</p>
                 </Link>
                 <Link to="/TFT" className="navbar_Option">
-                    <p>TFT</p>
-                </Link>
-                <Link to="/valorant" className="navbar_Option">
-                    <p>Valorant</p>
+                    <p>TFT Leaderboard</p>
                 </Link>
             </div>
-            <div className="navbar_SearchBar">
-                <form onSubmit={searchSummoner}>
-                    <input
-                        type="text"
-                        placeholder="Enter Summoner Name"
-                        value={summonerName}
-                        onChange={e => setSummonerName(e.target.value)}
-                        />
-                    <button>Enter</button>
-                </form>
+            <div className="navbar_Right">
+                <div className="navbar_SearchBar">
+                    <form onSubmit={searchSummoner}>
+                        <input
+                            type="text"
+                            placeholder="Enter Summoner Name"
+                            value={summonerName}
+                            onChange={e => setSummonerName(e.target.value)}
+                            />
+                        <button>Enter</button>
+                    </form>
+                </div>
             </div>
         </div>
     )
