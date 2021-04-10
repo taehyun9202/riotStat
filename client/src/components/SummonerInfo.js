@@ -16,7 +16,7 @@ function SummonerInfo(props) {
             setIsLoading(true);
 
             try {
-                await axios.get(`/summoner/v4/summoners/by-name/${props.match.params._id}?api_key=${API_KEY}`)
+                await axios.get(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${props.match.params._id}?api_key=${API_KEY}`)
                     .then(res => {
                         setSummoner(res.data)
                     })
@@ -43,7 +43,7 @@ function SummonerInfo(props) {
                         timeout={3000} //3 secs
                     /> :
                     <div className="summonerInfo_userInfo_img">
-                        <img src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${summoner.profileIconId}.png`} alt="summonerIcon" />
+                        <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${summoner.profileIconId}.png`} alt="summonerIcon" />
                         <div className="summonerInfo_userLevel">{summoner.summonerLevel}</div>
                     </div>
                 }

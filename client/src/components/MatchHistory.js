@@ -8,7 +8,7 @@ function MatchHistory(props) {
     const [ matchHistory, setMatchHistory ] = useState([])
     
     useEffect(() => {
-        const fetchData = async () => await axios.get(`/match/v4/matchlists/by-account/${props.summoner?.accountId}?api_key=${API_KEY}`)
+        const fetchData = async () => await axios.get(`https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${props.summoner?.accountId}?api_key=${API_KEY}`)
             .then(res => {
                 setMatchHistory(res.data.matches)
             })

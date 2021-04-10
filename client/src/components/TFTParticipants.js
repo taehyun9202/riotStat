@@ -7,7 +7,7 @@ function TFTParticipants(props) {
   const [ convertPuuid, setConvertPuuid] = useState({})
 
   useEffect(() => {
-    axios.get(`/summoner/v4/summoners/by-puuid/${props.participant}?api_key=${API_KEY}`)
+    axios.get(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${props.participant}?api_key=${API_KEY}`)
         .then(res => {
                 console.log(res.data)
                 setConvertPuuid(res.data)

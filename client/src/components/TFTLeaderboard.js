@@ -35,7 +35,6 @@ function TFTLeaderboard() {
     },[isLoaded, division, tier])
 
     var TopHundredPlayerTFT = TFTLeaderBoard.slice(0, 100)
-    console.log(TopHundredPlayerTFT)
   
     return (
         <div className="leaderBoard">

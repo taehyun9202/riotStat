@@ -15,7 +15,7 @@ function Match(props) {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                await axios.get(`/match/v4/matches/${props.gameId}?api_key=${API_KEY}`)
+                await axios.get(`https://na1.api.riotgames.com/lol/match/v4/matches/${props.gameId}?api_key=${API_KEY}`)
                     .then(res => {
                         setMatchInfo(res.data)
                     })
@@ -106,11 +106,11 @@ function Match(props) {
 
                     <div className="userMatch_Champion">
                         <Link to={`/champion/${convertChampionId(userChampionId)}`}>
-                            <img className="userMatch_Champion_Photo" src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(userChampionId)}.png`} />
+                            <img className="userMatch_Champion_Photo" src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(userChampionId)}.png`} />
                         </Link>
                         <div className="userMatch_Summoner_Spell">
-                            <img className="userMatch_Summoner_Spell_Photo" src={`http://ddragon.leagueoflegends.com/cdn/11.7.1/img/spell/${convertSummonerSpell(summonerSpell_1)}.png`} alt="summonerSpell_1" />
-                            <img className="userMatch_Summoner_Spell_Photo" src={`http://ddragon.leagueoflegends.com/cdn/11.7.1/img/spell/${convertSummonerSpell(summonerSpell_2)}.png`} alt="summonerSpell_2" />
+                            <img className="userMatch_Summoner_Spell_Photo" src={`https://ddragon.leagueoflegends.com/cdn/11.7.1/img/spell/${convertSummonerSpell(summonerSpell_1)}.png`} alt="summonerSpell_1" />
+                            <img className="userMatch_Summoner_Spell_Photo" src={`https://ddragon.leagueoflegends.com/cdn/11.7.1/img/spell/${convertSummonerSpell(summonerSpell_2)}.png`} alt="summonerSpell_2" />
                         </div>
                     </div>
 
@@ -127,7 +127,7 @@ function Match(props) {
 
                     <div className="userMatch_Items">
                         { fianlItems?.map((item)=> (
-                            <img src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`} />
+                            <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item}.png`} />
                         ))} 
                     </div>
 

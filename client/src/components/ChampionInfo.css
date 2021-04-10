@@ -1,14 +1,32 @@
 .championInfo {
+    width: 100%;
+    margin-top: -25px;
+    padding-top: 30px;
+    padding-bottom: 200px;
+}
+
+.backGroundImage {
+    position: absolute;
+    width: 100%;
+    height: calc(100% + 10px);
+    top: -10px;
+    opacity: 0.6;
+}
+
+.championInfo_Content {
     width: 900px;
     position: relative;
     top: 0%;
     left: 50%;
     transform: translateX(-50%);
-    padding-bottom: 200px;
 }
 
+.championInfo_Content h1 {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
 
-.championInfo .championInfo_Top {
+.championInfo_Top {
     position: relative;
     display: flex;
     height: 500px;
@@ -24,7 +42,7 @@
     gap: 20px;
 }
 img:hover {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 .championInfo_Img_Pagination {
     display: flex;
@@ -34,7 +52,6 @@ img:hover {
     width: 100%;
     position: relative;
     justify-content: center;
-    background-color: skyblue;
 }
 
 .MuiSvgIcon-root {

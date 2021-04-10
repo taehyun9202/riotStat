@@ -2,36 +2,109 @@
     width: 100%;
 }
 
-.championList .championList_List {
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    gap: 1.4rem;
+.championList h1 {
+    margin-left: 10px;
 }
 
-.championList .championList_List .championList_Champ {
-    width: 160px;
-    height: 160px;
+.championList_Select {
+    width: calc(100% - 80px);
+    display: flex;
+    margin: 20px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 20px;
+}
+
+.championList_Tags {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-gap: 25px;
+    transition: 1s;
+}
+
+.championList_Tags button, .championList_Search {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: white;
+    opacity: 0.4;
+    font-size: 20px;
+}
+
+.championList_Search {
+    position: absolute;
+    right: 100px;
+}
+
+.championList_SearchBar input {
+    position: absolute;
+    margin-top: -5px;
+    left: 100px;
+    font-size: 20px;
+    width: 65%;
+    height: 30px;
+    padding-left: 20px;
+}
+
+.championList_SearchClose {
+    position: absolute;
+    margin-left: -15px;
+    margin-top: -5px;
+}
+
+.championList_Tags button:hover, .championList_Search:hover {
+    opacity: 1;
+}
+
+.championList_Tags button:focus, .championList_Search:focus {
+    opacity: 1;
+}
+
+.championList .championList_List {
+    width: 100%;
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;
+    gap: 20px;
+}
+
+.championList_Champ {
     position: relative;
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
-
-/* .championList .championList_List .championList_Champ:hover {
-    background-color: tomato;
-} */
 
 .championList .championList_List .championList_Champ p {
     position: relative;
     text-decoration: none;
+    top: -17px;
+    background-color: skyblue;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    z-index: 100;
 }
 
-.championList .championList_List .championList_Champ img {
+a {
+    text-decoration: none;
+}
+
+.championList_Champ img {
     position: relative;
-    top: 15px;
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.championList_Champ:hover {
+    transform: scale(1.08);
+    transition: 1s;
 }

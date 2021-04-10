@@ -9,7 +9,7 @@ function Team(props) {
             <div className="team_ChampionImage">
                 {props.info?.map((user) => (
                     <img 
-                        src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(user.championId)}.png`}
+                        src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(user.championId)}.png`}
                         alt="ChampionIcon"
                         style={{
                             height: "20px"

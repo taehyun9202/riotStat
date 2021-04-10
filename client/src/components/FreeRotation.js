@@ -16,7 +16,6 @@ function FreeRotation() {
             .catch(err => console.log(err))
     }, [championList?.length])
 
-    console.log(championList)
     return (
         <div className="rotation">
             <div className="rotation_Section">
@@ -25,7 +24,7 @@ function FreeRotation() {
                     {championList.map((championId) => (
                         <Link to={{ pathname: `/champion/${convertChampionId(championId)}`, champion: convertChampionId(championId) }}>
                             <div className="championList_Champ">
-                                <img src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(championId)}.png`} alt={convertChampionId(championId)} />
+                                <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(championId)}.png`} alt={convertChampionId(championId)} />
                                 <p>{convertChampionId(championId)}</p>
                             </div>
                         </Link>
@@ -38,7 +37,7 @@ function FreeRotation() {
                     {newPlayerOnly.map((championId) => (
                         <Link to={{ pathname: `/champion/${convertChampionId(championId)}`, champion: convertChampionId(championId) }}>
                             <div className="championList_Champ">
-                                <img src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(championId)}.png`} alt={convertChampionId(championId)} />
+                                <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${convertChampionId(championId)}.png`} alt={convertChampionId(championId)} />
                                 <p>{convertChampionId(championId)}</p>
                             </div>
                         </Link>

@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Link,
 } from "react-router-dom";
 import Navbar from './components/Navbar'
 import ChampionList from './components/ChampionList'
@@ -33,6 +34,11 @@ function App() {
               <ChampionInfo {...props}/>
             )}
           />
+
+          <Route path="/riot.txt">
+            <Link to="../public/riot.txt">
+            </Link>
+          </Route>
 
           <Route path="/leaderboard">
             <Leaderboard />
