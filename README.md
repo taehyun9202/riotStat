@@ -2,7 +2,7 @@
 
 ## Summary
 
-riotStat is created using React,React Hooks, React Router and Axios. 
+riotStat is created using React, React Hooks, React Router, and Axios. 
 
 There are three main features of the website: 
 
@@ -15,7 +15,7 @@ All the images and lists are displayed using grid system or flexbox.
 ## Remarks
 
 1. All the features except the champion data requires api key. Riot only provides api key last no longer than a day for personal use. We will update as soon as we got the production api key from riot.
-2. league and tft data doesn not share same url, since the project is only client side and required multiple proxy setup for CORS. We used **Allow CORS chrome extension**. if you have trouble with fetching user data, please install the extension.
+2. league and tft data does not share same url, since the project is only client side and required multiple proxy setup for CORS. We used **Allow CORS chrome extension**. if you have trouble with fetching user data, please install the extension.
 
 
 
