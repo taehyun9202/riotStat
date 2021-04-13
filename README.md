@@ -14,13 +14,8 @@ All the images and lists are displayed using grid system or flexbox.
 
 ## Remarks
 
-All the features except the champion data requires api key.
-
-Riot only provides api key last no longer than a day for personal use.
-
-We currently asked production api key for long time use.
-
-We will update as soon as we got the production api key from riot.
+1. All the features except the champion data requires api key. Riot only provides api key last no longer than a day for personal use. We will update as soon as we got the production api key from riot.
+2. league and tft data doesn not share same url, since the project is only client side and required multiple proxy setup for CORS. We used **Allow CORS chrome extension**. if you have trouble with fetching user data, please install the extension.
 
 
 
