@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {API_KEY} from './state'
 import axios from 'axios'
-
+import './TFTParticipants.css'
 function TFTParticipants(props) {
   const [ convertPuuid, setConvertPuuid] = useState({})
 
@@ -21,7 +21,7 @@ function TFTParticipants(props) {
 console.log(convertPuuid)
 
   return (
-    <div className="">
+    <div className="TFTParticipants">
       {
         <Link to={`/summoner/${convertPuuid.name}`}>
           <p className="">{convertPuuid.name}</p>

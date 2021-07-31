@@ -28,11 +28,12 @@ function ChampionList(props) {
         })
         setFiltered(filteredList)
     }, [searchInput])
-    console.log(filtered)
+
     return (
         <div className="championList">
             <h1>All Champions</h1>
             <div className="championList_Select">
+                <div className="championList_Cover" />
                 <div 
                     className="championList_Tags"
                     style={{
@@ -59,13 +60,18 @@ function ChampionList(props) {
                         placeholder="Search by Champion Name" 
                         value={searchInput}
                         onChange={e => setSearchInput(e.target.value)}/>
-                    <CloseIcon onClick={() => { 
-                        setSearch(false)
-                        setSearchInput("")
-                        setFiltered({})
-                    }} className="championList_SearchClose" fontSize="large"/>
                 </div>
-                <button className="championList_Search" onClick={() => setSearch(true)}>Search</button>
+                {   search ? 
+                    <CloseIcon 
+                        onClick={() => { 
+                            setSearch(false)
+                            setSearchInput("")
+                            setFiltered({})
+                        }} 
+                        className="championList_SearchClose" fontSize="large"
+                    /> :
+                    <button className="championList_Search" onClick={() => setSearch(true)}>Search</button>
+                }
             </div>
             <div className="championList_List">
                 { 

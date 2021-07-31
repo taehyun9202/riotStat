@@ -22,6 +22,16 @@
     transition: 1s;
 }
 
+
+.championList_Cover {
+    position: absolute;
+    top: 190px;
+    height: 50px;
+    width: 100%;
+    right: 900px;
+    z-index: 100000;
+    background-color: white;
+}
 .championList_Tags button, .championList_Search {
     border: none;
     outline: none;
@@ -41,23 +51,26 @@
     margin-top: -5px;
     left: 100px;
     font-size: 20px;
-    width: 65%;
+    width: 68%;
     height: 30px;
     padding-left: 20px;
 }
 
 .championList_SearchClose {
     position: absolute;
-    margin-left: -15px;
+    right: 120px;
     margin-top: -5px;
 }
 
-.championList_Tags button:hover, .championList_Search:hover {
+.championList_Tags button:hover, .championList_Search:hover,
+.championList_Tags button:active, .championList_Search:active {
     opacity: 1;
+    transform: scale(1.2);
 }
 
 .championList_Tags button:focus, .championList_Search:focus {
     opacity: 1;
+    transform: scale(1.2);
 }
 
 .championList .championList_List {

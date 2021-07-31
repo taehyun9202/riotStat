@@ -88,4 +88,15 @@
 
 .TFTMatch_userMatch_Participants {
     flex: 1;
+    height: 160px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0px;
+}
+
+.TFTMatch_userMatch_Participants button {
+    height: 30px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }

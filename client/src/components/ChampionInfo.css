@@ -6,11 +6,13 @@
 }
 
 .backGroundImage {
-    position: absolute;
-    width: 100%;
+    position: fixed;
     height: calc(100% + 10px);
     top: -10px;
+    left: 0;
     opacity: 0.6;
+    min-width: 100vw;
+    object-fit: cover;
 }
 
 .championInfo_Content {
@@ -41,7 +43,7 @@
     align-items: center;
     gap: 20px;
 }
-img:hover {
+img:hover, img:active {
     opacity: 0.8;
 }
 .championInfo_Img_Pagination {
@@ -90,3 +92,5 @@ img:hover {
     height: 64px;
     margin-left: 40px;
 }
+
+

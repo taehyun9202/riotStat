@@ -1,11 +1,12 @@
 .skillHover {
-    position: relative;
+    position: absolute;
     left: 20px;
-    top: 20px;
+    top: 80px;
     width: calc(100% - 120px);
     background-color: #282c34;
     color: white;
     padding: 20px 40px 40px;
+    z-index: 100;
 }
 
 .skillHover .skillHover_title {

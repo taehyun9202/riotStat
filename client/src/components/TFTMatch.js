@@ -146,7 +146,7 @@ function TFTMatch(props) {
             </div>
             <div className="TFTMatch_userMatch_Participants">
               {!showParticiapnts ? 
-                <button onClick={() => setShowParticipants(!showParticiapnts)}>Render Participants</button> :
+                <button onClick={() => setShowParticipants(!showParticiapnts)}>Show Participants</button> :
                  allParticipants?.map((participant) => (
                   <TFTParticipants participant={participant}/>
                 ))

@@ -1,0 +1,46 @@
+.championStats {
+   position: absolute;
+   width: 480px;
+   top: 82px;
+   z-index: 1;
+   padding: 10px 40px;
+   display: flex;
+   flex-direction: column;
+   background-color: #0b1625;
+}
+
+.championStats_Title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.championStats_Select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.championStats_Select label { 
+    color: white
+}
+
+.championStats_Select select {
+    height: 20px;
+}
+
+.championStats_Stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -20px;
+}
+
+.championStats p:nth-child(1), .championStats_Title h4 {
+    color: #ad9466;
+}
+
+.championStats p:nth-child(2) {
+    color: white;
+}

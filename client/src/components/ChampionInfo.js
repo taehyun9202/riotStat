@@ -5,6 +5,7 @@ import SkillHover from './SkillHover'
 import './ChampionInfo.css'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ChampionStats from './ChampionStats'
 
 function ChampionInfo(props) {
     const [ champion, setChampion ] = useState({})
@@ -22,6 +23,7 @@ function ChampionInfo(props) {
             .catch(err => console.log(err))
         fetchData()
     },[champion.data])
+
 
     const skillHoverIn = skill => {
         setIsShown(true)
@@ -128,6 +130,7 @@ function ChampionInfo(props) {
                         {isShown && (
                             <SkillHover skill={currentSkill} hover={isShown} passive={passive} chamImg={champLore} lore={champion.lore}/>
                         )}
+                        <ChampionStats className="championInfo_Stats" stats={champion.stats}/>
                     </div>
                 </div>
             </div>
