@@ -1,4 +1,4 @@
-export const API_KEY = "RGAPI-d2e110dd-8e54-44de-9d25-17f5122d5cbb";
+export const API_KEY = "";
 // export const API_KEY = prompt("Enter API KEY")
 export var language = "en_US";
 export var version = "11.6.1";
